@@ -1,5 +1,5 @@
-import { MantineProvider, Paper, Text, Accordion, Anchor } from "@mantine/core";
-import "@mantine/core/styles.css";
+import { Paper, Text, Accordion, Anchor } from "@mantine/core";
+// import "@mantine/core/styles.css";
 
 export default function Index() {
   const data = [
@@ -41,7 +41,7 @@ export default function Index() {
   ];
 
   const items = data.map((item, index) => (
-    <Paper key={index} shadow="xs" p="xl" bg={"white"}>
+    <Paper key={index} shadow="xs" p="xl" mb={16} bg={"white"} withBorder>
       <Text>{item.title}</Text>
       {item.history.map((h, index) => (
         <Accordion key={index} defaultValue="Apples">
@@ -57,10 +57,8 @@ export default function Index() {
   ));
 
   return (
-    <MantineProvider>
-      <Paper shadow="xs" p="xl" bg={"white"}>
-        {items}
-      </Paper>
-    </MantineProvider>
+    <Paper radius="0" shadow="xs" bg={"white"} p={40}>
+      {items}
+    </Paper>
   );
 }

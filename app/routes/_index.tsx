@@ -1,3 +1,5 @@
+import { Container } from "@mantine/core";
+
 export default function Index() {
-  return <div className="flex h-screen items-center justify-center">index</div>;
+  return <Container>index</Container>;
 }
