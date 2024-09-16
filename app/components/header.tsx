@@ -1,0 +1,27 @@
+import { Anchor, Flex, Paper, Text } from "@mantine/core";
+
+export function Header() {
+  return (
+    <Paper radius="0" shadow="xl" h={40} bg={"white"} pr={48} withBorder>
+      <Flex
+        mih={50}
+        gap="md"
+        justify="flex-end"
+        align="center"
+        direction="row"
+        wrap="wrap"
+      >
+        <Text ta="center">
+          <Anchor href="/bookmark" c="black" underline="never">
+            一覧
+          </Anchor>
+        </Text>
+        <Text ta="center">
+          <Anchor href="/add" c="black" underline="never">
+            追加
+          </Anchor>
+        </Text>
+      </Flex>
+    </Paper>
+  );
+}
