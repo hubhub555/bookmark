@@ -1,5 +1,4 @@
 import { Paper, Text, Accordion, Anchor } from "@mantine/core";
-// import "@mantine/core/styles.css";
 
 export default function Index() {
   const data = [
