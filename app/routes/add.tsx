@@ -2,10 +2,15 @@ import { useState } from "react";
 import { Button, Flex, Input, Paper } from "@mantine/core";
 
 export default function Index() {
+  const [searchWord, setSerachWord] = useState<string>("");
   const [inputs, setInputs] = useState<string[]>([""]);
 
   const addInput = () => {
     setInputs([...inputs, ""]);
+  };
+
+  const handleSetSerachWord = (searchWord: string) => {
+    setSerachWord(searchWord);
   };
 
   const handleInputChange = (index: number, value: string) => {
@@ -13,10 +18,25 @@ export default function Index() {
     newInputs[index] = value;
     setInputs(newInputs);
   };
+
+  // 入力値をローカルストレージに保存する関数
+  const saveToLocalStorage = (searchWord: string, inputs: string[]) => {
+    const bookmark = {
+      searchWord,
+      links: inputs,
+    };
+    localStorage.setItem("bookmark", JSON.stringify(bookmark));
+    alert("入力値がローカルストレージに保存されました!");
+  };
   return (
     <Paper radius="0" shadow="xs" bg={"white"} p={40}>
       <Flex>
-        <Input placeholder="検索キーワード" mr={8}></Input>
+        <Input
+          placeholder="検索キーワード"
+          mr={8}
+          value={searchWord}
+          onChange={(e) => handleSetSerachWord(e.target.value)}
+        ></Input>
         <Button onClick={addInput}>+</Button>
       </Flex>
       <Flex
@@ -36,7 +56,9 @@ export default function Index() {
             onChange={(e) => handleInputChange(index, e.target.value)}
           />
         ))}
-        <Button>保存</Button>
+        <Button onClick={() => saveToLocalStorage(searchWord, inputs)}>
+          保存
+        </Button>
       </Flex>
     </Paper>
   );

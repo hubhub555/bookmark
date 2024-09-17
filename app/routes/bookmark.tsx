@@ -1,6 +1,21 @@
 import { Paper, Text, Accordion, Anchor } from "@mantine/core";
+import { useEffect, useState } from "react";
+
+type BookmarkType = {
+  searchWord: string;
+  links: string[];
+};
 
 export default function Index() {
+  const [bookmark, setBookmark] = useState<BookmarkType | null>(null);
+
+  useEffect(() => {
+    const storedBookmark = localStorage.getItem("bookmark");
+    if (storedBookmark) {
+      setBookmark(JSON.parse(storedBookmark));
+    }
+  }, []);
+
   const data = [
     {
       title: "アンパンマンの検索履歴",
@@ -55,9 +70,25 @@ export default function Index() {
     </Paper>
   ));
 
+  const bookmarkList = (
+    <Paper shadow="xs" p="xl" mb={16} bg={"white"} withBorder>
+      <Text>{bookmark?.searchWord}</Text>
+      {bookmark?.links.map((link, index) => (
+        <Accordion key={index} defaultValue="Apples">
+          <Accordion.Item key={index} value={link + index}>
+            <Accordion.Control>{link}</Accordion.Control>
+            <Accordion.Panel>
+              <Anchor href={link}>{link}</Anchor>
+            </Accordion.Panel>
+          </Accordion.Item>
+        </Accordion>
+      ))}
+    </Paper>
+  );
+
   return (
     <Paper radius="0" shadow="xs" bg={"white"} p={40}>
-      {items}
+      {bookmark ? bookmarkList : items}
     </Paper>
   );
 }
