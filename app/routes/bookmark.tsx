@@ -1,4 +1,4 @@
-import { Paper, Text, Accordion, Anchor } from "@mantine/core";
+import { Paper, Text, Accordion, Anchor, Button } from "@mantine/core";
 import { useEffect, useState } from "react";
 
 type BookmarkType = {
@@ -15,6 +15,11 @@ export default function Index() {
       setBookmark(JSON.parse(storedBookmark));
     }
   }, []);
+
+  const handleDelete = () => {
+    localStorage.removeItem("bookmark");
+    setBookmark(null);
+  };
 
   const data = [
     {
@@ -89,6 +94,9 @@ export default function Index() {
   return (
     <Paper radius="0" shadow="xs" bg={"white"} p={40}>
       {bookmark ? bookmarkList : items}
+      <Button bg="red" onClick={handleDelete}>
+        削除
+      </Button>
     </Paper>
   );
 }

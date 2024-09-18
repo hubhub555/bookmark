@@ -12,6 +12,11 @@ export function Header() {
         wrap="wrap"
       >
         <Text ta="center">
+          <Anchor href="/" c="black" underline="never">
+            トップ
+          </Anchor>
+        </Text>
+        <Text ta="center">
           <Anchor href="/bookmark" c="black" underline="never">
             一覧
           </Anchor>
