@@ -1,15 +1,15 @@
+import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
+import type { LoaderFunction, LoaderFunctionArgs } from "@remix-run/node";
 import {
+  Links,
   Outlet,
   Scripts,
   ScrollRestoration,
-  Links,
   useLoaderData,
 } from "@remix-run/react";
-import type { LoaderFunction, LoaderFunctionArgs } from "@remix-run/node";
-import { Header } from "./components/header";
-import { MantineProvider } from "@mantine/core";
 import { authenticator } from "~/services/auth.server";
-import "@mantine/core/styles.css";
+import { Header } from "./components/Header";
 
 export const loader: LoaderFunction = async ({
   request,

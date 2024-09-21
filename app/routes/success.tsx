@@ -1,21 +1,24 @@
-import type { LoaderFunction, LoaderFunctionArgs } from '@remix-run/node'
-import { redirect, json } from "@remix-run/node";
-import { useLoaderData } from '@remix-run/react'
-import { authenticator, AuthUserType } from '~/services/auth.server'
+import type { LoaderFunction, LoaderFunctionArgs } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { authenticator, AuthUserType } from "~/services/auth.server";
 
-export const loader: LoaderFunction = async ({ request }: LoaderFunctionArgs) => {
-  const user = await authenticator.isAuthenticated(request)
-  if (!user) { // 未ログインのユーザーはログインページにリダイレクト
-    return redirect('/login')
+export const loader: LoaderFunction = async ({
+  request,
+}: LoaderFunctionArgs) => {
+  const user = await authenticator.isAuthenticated(request);
+  if (!user) {
+    // 未ログインのユーザーはログインページにリダイレクト
+    return redirect("/login");
   }
   return json<LoaderData>({
-    user
-  })
+    user,
+  });
 };
 
 type LoaderData = {
-  user: AuthUserType
-}
+  user: AuthUserType;
+};
 
 export default function SuccessIndex() {
   const { user } = useLoaderData() as LoaderData;
