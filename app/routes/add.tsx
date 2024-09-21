@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Button, Flex, Input, Paper } from "@mantine/core";
+import { useState } from "react";
 
 export default function Index() {
   const [searchWord, setSerachWord] = useState<string>("");

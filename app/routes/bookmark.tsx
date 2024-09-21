@@ -1,4 +1,4 @@
-import { Paper, Text, Accordion, Anchor, Button } from "@mantine/core";
+import { Accordion, Anchor, Button, Paper, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 
 type BookmarkType = {
