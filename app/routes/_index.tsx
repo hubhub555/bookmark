@@ -1,5 +1,5 @@
-import { useNavigate } from "@remix-run/react";
 import { Anchor, Button, Container, Flex } from "@mantine/core";
+import { useNavigate } from "@remix-run/react";
 
 export default function Index() {
   const navigate = useNavigate();

@@ -1,9 +1,25 @@
-import { Outlet, Scripts, ScrollRestoration, Links } from "@remix-run/react";
-import { Header } from "./components/header";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import type { LoaderFunction, LoaderFunctionArgs } from "@remix-run/node";
+import {
+  Links,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+} from "@remix-run/react";
+import { authenticator } from "~/services/auth.server";
+import { Header } from "./components/Header";
+
+export const loader: LoaderFunction = async ({
+  request,
+}: LoaderFunctionArgs) => {
+  const isLogin = await authenticator.isAuthenticated(request);
+  return isLogin;
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const isLogin = useLoaderData<typeof loader>();
   return (
     <html lang="ja">
       <head>
@@ -13,7 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body style={{ backgroundColor: "white" }}>
         <MantineProvider>
-          <Header />
+          <Header auth={isLogin} />
           <ScrollRestoration />
           <Scripts />
           {children}

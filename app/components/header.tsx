@@ -1,8 +1,11 @@
 import { Anchor, Flex, Paper, Text } from "@mantine/core";
+import { AuthUserType } from "~/services/auth.server";
+import { AuthButton } from "./AuthButton";
+import { AuthImage } from "./AuthImage";
 
-export function Header() {
+export function Header(props: { auth: AuthUserType }) {
   return (
-    <Paper radius="0" shadow="xl" h={40} bg={"white"} pr={48} withBorder>
+    <Paper radius="0" shadow="xl" h={50} bg={"white"} pr={48} withBorder>
       <Flex
         mih={50}
         gap="md"
@@ -26,6 +29,8 @@ export function Header() {
             追加
           </Anchor>
         </Text>
+        <AuthButton auth={props.auth} />
+        <AuthImage auth={props.auth} />
       </Flex>
     </Paper>
   );

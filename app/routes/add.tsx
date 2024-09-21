@@ -1,16 +1,16 @@
-import { useState } from "react";
 import { Button, Flex, Input, Paper } from "@mantine/core";
+import { useState } from "react";
 
 export default function Index() {
-  const [searchWord, setSerachWord] = useState<string>("");
+  const [searchWord, setSearchWord] = useState<string>("");
   const [inputs, setInputs] = useState<string[]>([""]);
 
   const addInput = () => {
     setInputs([...inputs, ""]);
   };
 
-  const handleSetSerachWord = (searchWord: string) => {
-    setSerachWord(searchWord);
+  const handleSetSearchWord = (searchWord: string) => {
+    setSearchWord(searchWord);
   };
 
   const handleInputChange = (index: number, value: string) => {
@@ -35,7 +35,7 @@ export default function Index() {
           placeholder="検索キーワード"
           mr={8}
           value={searchWord}
-          onChange={(e) => handleSetSerachWord(e.target.value)}
+          onChange={(e) => handleSetSearchWord(e.target.value)}
         ></Input>
         <Button onClick={addInput}>+</Button>
       </Flex>
