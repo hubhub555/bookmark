@@ -8,6 +8,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
+import { SpeedInsights } from "@vercel/speed-insights/remix";
 import { authenticator } from "~/services/auth.server";
 import { Header } from "./components/Header";
 
@@ -34,6 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <Scripts />
           {children}
         </MantineProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
