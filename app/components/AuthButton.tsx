@@ -1,6 +1,6 @@
 import { Button } from "@mantine/core";
 import { Form } from "@remix-run/react";
-import { AuthUserType } from "~/services/auth.server";
+import { AuthUserType } from "~/type/AuthUser";
 
 export function AuthButton(props: { auth: AuthUserType }) {
   if (!props.auth) {

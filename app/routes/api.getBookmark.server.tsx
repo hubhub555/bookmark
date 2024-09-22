@@ -9,5 +9,6 @@ type LoaderData = {
 export const loader: LoaderFunction = async () => {
   const prisma = new PrismaClient();
   const user = await prisma.users.findFirst();
+  await prisma.$disconnect();
   return json<LoaderData>(user);
 };

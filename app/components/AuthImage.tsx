@@ -1,5 +1,5 @@
 import { Image } from "@mantine/core";
-import { AuthUserType } from "~/services/auth.server";
+import { AuthUserType } from "~/type/AuthUser";
 
 export function AuthImage(props: { auth: AuthUserType }) {
   if (props.auth) {
