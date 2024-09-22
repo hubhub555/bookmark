@@ -23,7 +23,7 @@ export default function Index() {
   };
 
   const handleGetList = async () => {
-    const url = "/api/getBookmark/server";
+    const url = "/api/getBookmark";
     const response = await fetch(url);
     const user = await response.json();
     console.log(user);
