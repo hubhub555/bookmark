@@ -8,6 +8,7 @@ type BookmarkType = {
 
 export default function Index() {
   const [bookmark, setBookmark] = useState<BookmarkType | null>(null);
+  const [user, setUser] = useState<string>("");
 
   useEffect(() => {
     const storedBookmark = localStorage.getItem("bookmark");
@@ -19,6 +20,14 @@ export default function Index() {
   const handleDelete = () => {
     localStorage.removeItem("bookmark");
     setBookmark(null);
+  };
+
+  const handleGetList = async () => {
+    const url = "/api/getBookmark";
+    const response = await fetch(url);
+    const user = await response.json();
+    console.log(user);
+    setUser(user.email);
   };
 
   const data = [
@@ -97,6 +106,8 @@ export default function Index() {
       <Button bg="red" onClick={handleDelete}>
         削除
       </Button>
+      <Button onClick={handleGetList}></Button>
+      <Text>user:{user}</Text>
     </Paper>
   );
 }

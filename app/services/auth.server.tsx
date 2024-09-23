@@ -1,13 +1,7 @@
 import { Authenticator } from "remix-auth";
 import { GoogleStrategy } from "remix-auth-google";
+import { AuthUserType } from "~/type/AuthUser";
 import { sessionStorage } from "./session.server";
-
-export type AuthUserType = {
-  id: string;
-  name: string;
-  email: string;
-  image: string;
-};
 
 const authenticator = new Authenticator<AuthUserType>(sessionStorage);
 

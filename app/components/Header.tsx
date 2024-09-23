@@ -1,5 +1,5 @@
 import { Anchor, Flex, Paper, Text } from "@mantine/core";
-import { AuthUserType } from "~/services/auth.server";
+import { AuthUserType } from "~/type/AuthUser";
 import { AuthButton } from "./AuthButton";
 import { AuthImage } from "./AuthImage";
 
