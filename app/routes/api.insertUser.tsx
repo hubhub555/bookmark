@@ -23,9 +23,9 @@ export const action: ActionFunction = async ({ request }) => {
             where: { email: email },
         });
         
-        // リクエストのemailがuserTBLにすでに存在する場合はエラーを返却
+        // リクエストのemailがuserTBLにすでに存在する場合はDBに登録せず返却
         if (existingUser) {
-            return json({ error: "そのemailはすでにuserTBLに存在します" }, { status: 400 });
+          return json({ message: "そのemailはすでにuserTBLに登録済みです" }, { status: 200 });
         }
 
         // 取得したidとemailをデータベースに挿入
@@ -39,7 +39,7 @@ export const action: ActionFunction = async ({ request }) => {
         // LoaderData型に合わせて挿入した内容を設定
         const loaderData: LoaderData = { user: newUser };
         // 成功した場合のレスポンスを返す
-        return json(loaderData);
+        return json({ loaderData }, { status: 201 });
       } catch (error) {
         console.error("エラー:", error);
         // エラーが発生した場合のレスポンスを返す

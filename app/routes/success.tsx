@@ -42,7 +42,7 @@ export default function SuccessIndex() {
 
       // HTTPレスポンスが正常ではない場合
       if (!response.ok) {
-        throw new Error('APIでエラーが発生しました');
+        throw new Error('api.insertUserでエラー');
       }
 
       // APIからのレスポンスを取得し、ログに出力
