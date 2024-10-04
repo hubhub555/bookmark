@@ -1,7 +1,7 @@
 import type { LoaderFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import React from "react";
+import { useEffect } from "react";
 import { authenticator } from "~/services/auth.server";
 import { AuthUserType } from "~/type/AuthUser";
 
@@ -54,7 +54,7 @@ export default function SuccessIndex() {
   };
 
   // ログインに成功し、コンポーネントのマウント時のみユーザ登録APIを呼び出す
-  React.useEffect(() => {
+  useEffect(() => {
     insertUserApi();
   }, []);
 
