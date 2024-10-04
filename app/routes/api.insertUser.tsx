@@ -1,11 +1,11 @@
 import { PrismaClient } from "@prisma/client";
-import { json, type ActionFunction, } from "@remix-run/node";
-import { AuthUserType } from "~/type/AuthUser";
+import { json, type ActionFunction } from "@remix-run/node";
+import { UsersType } from "~/type/Users";
 
-  // usersの型定義
-  type LoaderData = {
-    user: AuthUserType;
-  };
+// usersの型定義
+type LoaderData = {
+  user: UsersType;
+};
 
 export const action: ActionFunction = async ({ request }) => {
     // データベースへの接続を確立
